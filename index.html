@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image:url("Images/gymguy.jpeg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+
+
+
+
+.navbar {
+    text-align: right;
+    padding:15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: right;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 20px 20px;
+    position: relative; 
+    transition: 0.4s;
+
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: red;
+    transition: width 0.3s;
+}
+
+.navbar a:hover::after {
+    width: 100%; 
+}
+
+.navbar a:hover {
+   
+    border-radius: 5px;
+    color:red;
+}
+
+
+
+.home {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.overlay {
+    text-align: center;
+    color: white;
+    animation: fadeIn 1s ease-out;
+}
+
+.title {
+    font-size: 4em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: darkgray 10px 10px 5px;
+    
+}
+
+p {
+    font-size: 1.5em;
+    max-width: 600px;
+    margin: 0 auto;
+    
+    text-shadow: darkgray 1px 1px 1px;
+}
+
+
+
+.translate-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+.translate-btn:hover {
+    background-color: black;
+}
+
+
+
+
+
+
+
+
+.translate-btn img {
+    transition: transform 0.5s ease;
+}
+
+.translate-btn:hover img {
+    transform: rotate(360deg);
+}
+
+.translate-btn {
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.translate-btn:hover {
+    color: #fff;
+    
+}
+.fade-out { opacity: 0; } 
+
+.fade-in { opacity: 1 };
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    border-width:0.2px;
+    border-style:solid;
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(-10px);
+    flex-direction: column; 
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: lightgrey;
+}
+
+.dropdown:hover > .dropdown-content {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    border-color:black;
+    border-width:1px;
+    border-style:solid;
+}
+
+a.button {
+    text-decoration: none;
+    color: black;
+    background-color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    position: relative; 
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+a.button::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: red;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+
+a.button:hover {
+    background-color: black;
+    color: white;
+}
+
+a.button:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+        </style>
+</head>
+
+
+<body>
+ 
+<nav class="navbar">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+            <a href="#">Workouts</a>
+            <ul class="dropdown-content">
+                <li ><a href="Arms.html">Arms </a></li>
+                <li ><a href="Chest.html">Chest & Back</a></li>
+                <li ><a href="Legs.html">Legs</a></li>
+                <li ><a href="Abs.html"> Abs </a></li>
+            </ul></li>
+        
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="Register.html">Register Now</a></li>
+        <li><a href="Contact Us.html">Contact Us</a></li>
+        <li><a href="#" class="translate-btn" onclick="translatePage()">
+            <img id="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/32px-Flag_of_Saudi_Arabia.svg.png" alt="Saudi Arabia Flag" style="width: 20px; height: 15px; margin-right: 5px;">
+            Translate
+        </a>
+    </ul>
+</nav>
+
+    <section class="home" id="home">
+        <div class="overlay">
+            <h1 class="title"><q>MAKE THE DAYS COUNT</q></h1>
+            <p id="ro">Transform your body, transform your life. Join us today!</p><br>
+            <a href="Register.html" class="button" id="MyButton">Register Now!</a>
+
+        </div>
+    </section>
+
+
+    
+
+
+<script>
+let isArabic = false;
+
+
+function translatePage() {
+    const title = document.querySelector('.title');
+    const paragraph = document.querySelector('.home p'); 
+    const navbarLinks = document.querySelectorAll('.navbar a');
+    let btnn = document.querySelector(".translate-btn"); 
+   let button0 = document.getElementById('MyButton');  
+    if (isArabic) {
+       
+        title.textContent = "Welcome to Our Gym!";
+        paragraph.textContent = "Transform your body, transform your life. Join us today!";
+        navbarLinks[0].textContent = "Home";
+        navbarLinks[1].textContent = "Workouts";
+        navbarLinks[2].textContent = "Arms";
+        navbarLinks[3].textContent = "Chest & Back";
+        navbarLinks[4].textContent = "Legs";
+        navbarLinks[5].textContent = "Abs";
+        navbarLinks[6].textContent = "About Us";
+        navbarLinks[7].textContent = "Register Now";
+        navbarLinks[8].textContent = "Contact Us";
+        button0.textContent = "Register Now!";
+        btnn.innerHTML = '<img id="flag" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/32px-Flag_of_the_United_Kingdom.svg.png" alt="UK Flag" style="width: 20px; height: 15px; margin-right: 5px;"> English';
+    } else {
+        
+        title.textContent ="!مرحباً في صالتنا الرياضية";
+        paragraph.textContent = "!حوّل جسدك، حوّل حياتك. انضم إلينا اليوم";
+        navbarLinks[0].textContent = "الرئيسية";
+        navbarLinks[1].textContent = "التمارين";
+        navbarLinks[2].textContent = "الساعدين"
+        navbarLinks[3].textContent = "الصدر و الظهر"
+        navbarLinks[4].textContent = "الرجلين"
+        navbarLinks[5].textContent = "المعدة"
+        navbarLinks[6].textContent = "عنا";
+        navbarLinks[7].textContent = "سجل الآن";
+        navbarLinks[8].textContent = "تواصل معنا";
+        button0.textContent = "!تسجل الآن";
+        btnn.innerHTML = '<img id="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/32px-Flag_of_Saudi_Arabia.svg.png" alt="Saudi Arabia Flag" style="width: 20px; height: 15px; margin-right: 5px;"> العربية';
+        
+    }
+
+    isArabic = !isArabic;  
+}
+
+
+
+
+
+</script>
+
+</body>
+</html>
